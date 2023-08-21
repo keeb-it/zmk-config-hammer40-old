@@ -1,0 +1,6 @@
+if SHIELD_HAMMER40
+
+config ZMK_KEYBOARD_NAME
+    default "hammer40"
+
+endif
