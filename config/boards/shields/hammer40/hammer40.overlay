@@ -27,7 +27,6 @@
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
         diode-direction = "col2row";
-        debounce-press-ms = <0>;
 
         col-gpios
             = <&shifter 4 GPIO_ACTIVE_HIGH>
@@ -36,9 +35,9 @@
             ;
 
         row-gpios
-            = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            = <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
     };
 
@@ -51,19 +50,5 @@
         RC(1,0) RC(1,1) RC(1,2)
         RC(2,0) RC(2,1) RC(2,2)
       >;
-    };
-
-    mid_encoder: encoder_mid {
-      compatible = "alps,ec11";
-      label = "MID_ENCODER";
-      a-gpios = <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-      b-gpios = <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-      resolution = <4>;
-      status = "okay";
-    };
-
-    sensors {
-      compatible = "zmk,keymap-sensors";
-      sensors = <&mid_encoder>;
-    };
+  };
 };
