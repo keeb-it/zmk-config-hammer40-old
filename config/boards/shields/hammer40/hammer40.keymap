@@ -7,9 +7,9 @@
 
         default_layer {
             bindings = <
-              &kp A  &kp B  &kp C
-              &kp N1 &kp N2 &kp N3
-              &kp N1 &kp N2 &kp N3
+              &kp A  &kp B  &kp C  &kp D
+              &kp N1 &kp N2 &kp N3 &kp &bootloader
+              &kp N1 &kp N2 &kp N3 &kp N4
             >;
         };
     };
