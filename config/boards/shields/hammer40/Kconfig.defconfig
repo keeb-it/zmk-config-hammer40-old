@@ -1,19 +1,19 @@
 if SHIELD_HAMMER40
 
 config ZMK_KEYBOARD_NAME
-  default "hammer40"
+    default "hammer40"
 
 endif
 
 if ZMK_DISPLAY
 
 config I2C
-  default y
+    default y
 
 config SSD1306
-  default y
+    default y
 
 config SSD1306_REVERSE_MODE
-  default y
+    default y
 
 endif # ZMK_DISPLAY
