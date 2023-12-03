@@ -3,20 +3,19 @@
 &xiao_serial { status = "disabled"; };
 
 &xiao_spi {
-  status = "okay";
-  cs-gpios = <&xiao_d 7 GPIO_ACTIVE_LOW>;
-  shifter: 595@0 {
-    compatible = "zmk,gpio-595";
     status = "okay";
-    gpio-controller;
-    spi-max-frequency = <200000>;
-    reg = <0>;
-    label = "74HC595";
-    #gpio-cells = <2>;
-    ngpios = <16>;
-  };
+    cs-gpios = <&xiao_d 7 GPIO_ACTIVE_LOW>;
+    shifter: 595@0 {
+        compatible = "zmk,gpio-595";
+        status = "okay";
+        gpio-controller;
+        spi-max-frequency = <200000>;
+        reg = <0>;
+        label = "74HC595";
+        #gpio-cells = <2>;
+        ngpios = <16>;
+    };
 };
-
 
 &xiao_i2c {
     status = "okay";
@@ -62,12 +61,27 @@
     };
 
     default_transform: keymap_transform_0 {
-      compatible = "zmk,matrix-transform";
-      columns = <3>;
-      rows = <2>;
-      map = <
-        RC(0,0) RC(0,1) RC(0,2)
-        RC(1,0) RC(1,1) RC(1,2)
-      >;
-  };
+        compatible = "zmk,matrix-transform";
+        columns = <3>;
+        rows = <2>;
+        map = <
+            RC(0,0) RC(0,1) RC(0,2)
+            RC(1,0) RC(1,1) RC(1,2)
+        >;
+    };
+
+    mid_encoder: encoder_mid {
+        compatible = "alps,ec11";
+        label = "ENCODER";
+        a-gpios = <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <80>;
+        status = "okay";
+    };
+
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&mid_encoder>;
+        triggers-per-rotation = <20>;
+    };
 };
