@@ -49,9 +49,9 @@
         diode-direction = "col2row";
 
         col-gpios
-            = <&shifter 4 GPIO_ACTIVE_HIGH>
-            , <&shifter 5 GPIO_ACTIVE_HIGH>
-            , <&shifter 6 GPIO_ACTIVE_HIGH>
+            = <&xiao_d 2 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 3 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 6 GPIO_ACTIVE_HIGH>
             ;
 
         row-gpios
@@ -68,20 +68,5 @@
             RC(0,0) RC(0,1) RC(0,2)
             RC(1,0) RC(1,1) RC(1,2)
         >;
-    };
-
-    mid_encoder: encoder_mid {
-        compatible = "alps,ec11";
-        label = "ENCODER";
-        a-gpios = <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        steps = <80>;
-        status = "okay";
-    };
-
-    sensors: sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&mid_encoder>;
-        triggers-per-rotation = <20>;
     };
 };

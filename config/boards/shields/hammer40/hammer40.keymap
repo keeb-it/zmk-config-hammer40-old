@@ -10,8 +10,6 @@
               &kp A  &kp B  &kp C
               &kp N1 &kp N2 &bootloader
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
     };
 };
